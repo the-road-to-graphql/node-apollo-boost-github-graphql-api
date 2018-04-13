@@ -15,8 +15,8 @@ const client = new ApolloClient({
 });
 
 const ORGANIZATION = gql`
-  {
-    organization(login: "the-road-to-learn-react") {
+  query($organization: String!) {
+    organization(login: $organization) {
       name
       url
     }
@@ -26,5 +26,8 @@ const ORGANIZATION = gql`
 client
   .query({
     query: ORGANIZATION,
+    variables: {
+      organization: 'the-road-to-learn-react',
+    },
   })
   .then(result => console.log(result));
