@@ -20,7 +20,7 @@ const client = new ApolloClient({
 
 // QUERY
 
-const REPOSITORIES_OF_ORGANIZATION = gql`
+const GET_REPOSITORIES_OF_ORGANIZATION = gql`
   query($organization: String!, $cursor: String) {
     organization(login: $organization) {
       name
@@ -51,7 +51,7 @@ const REPOSITORIES_OF_ORGANIZATION = gql`
 
 client
   .query({
-    query: REPOSITORIES_OF_ORGANIZATION,
+    query: GET_REPOSITORIES_OF_ORGANIZATION,
     variables: {
       organization: 'the-road-to-learn-react',
       cursor: undefined,
@@ -74,7 +74,7 @@ client
     }
 
     return client.query({
-      query: REPOSITORIES_OF_ORGANIZATION,
+      query: GET_REPOSITORIES_OF_ORGANIZATION,
       variables: {
         organization: 'the-road-to-learn-react',
         cursor: endCursor,
@@ -95,3 +95,34 @@ client
   .catch(console.log);
 
 // MUTATION
+
+const ADD_STAR = gql`
+  mutation AddStar($repositoryId: ID!) {
+    addStar(input: { starrableId: $repositoryId }) {
+      starrable {
+        id
+        viewerHasStarred
+      }
+    }
+  }
+`;
+
+const REMOVE_STAR = gql`
+  mutation RemoveStar($repositoryId: ID!) {
+    removeStar(input: { starrableId: $repositoryId }) {
+      starrable {
+        id
+        viewerHasStarred
+      }
+    }
+  }
+`;
+
+client
+  .mutate({
+    mutation: ADD_STAR,
+    variables: {
+      repositoryId: 'MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==',
+    },
+  })
+  .then(console.log);
