@@ -57,16 +57,21 @@ client
       cursor: undefined,
     },
   })
-  // first page
+  // resolve first page
   .then(result => {
-    const { organization } = result.data;
-    const { endCursor } = organization.repositories.pageInfo;
+    const { pageInfo, edges } = result.data.organization.repositories;
+    const { endCursor, hasNextPage } = pageInfo;
 
-    state = {
-      organization,
-    };
+    console.log('second page', edges.length);
+    console.log('endCursor', endCursor);
 
-    console.log('first page', state.organization.repositories.edges.length);
+    return pageInfo;
+  })
+  // query second page
+  .then(({ endCursor, hasNextPage }) => {
+    if (!hasNextPage) {
+      throw Error('no next page');
+    }
 
     return client.query({
       query: REPOSITORIES_OF_ORGANIZATION,
@@ -76,24 +81,17 @@ client
       },
     });
   })
-  // second page
+  // resolve second page
   .then(result => {
-    const { organization } = result.data;
+    const { pageInfo, edges } = result.data.organization.repositories;
+    const { endCursor, hasNextPage } = pageInfo;
 
-    state = {
-      organization: {
-        ...organization,
-        repositories: {
-          ...organization.repositories,
-          edges: [
-            ...state.organization.repositories.edges,
-            ...organization.repositories.edges,
-          ],
-        },
-      },
-    };
+    console.log('second page', edges.length);
+    console.log('endCursor', endCursor);
 
-    console.log('second page', state.organization.repositories.edges.length);
-  });
+    return pageInfo;
+  })
+  // log error when there is no next page
+  .catch(console.log);
 
 // MUTATION
