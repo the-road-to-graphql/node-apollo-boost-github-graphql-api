@@ -12,8 +12,8 @@ A standalone version of a Apollo Client using GitHub's GraphQL API for performin
 
 ## Installation
 
-* `git clone git@github.com:the-road-to-graphql/node-appollo-boost-github-graphql-api.git`
-* `cd node-appollo-boost-github-graphql-api`
+* `git clone git@github.com:the-road-to-graphql/node-apollo-boost-github-graphql-api.git`
+* `cd node-apollo-boost-github-graphql-api`
 * add your own [GitHub personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) in a .env file in your root folder
   * GITHUB_PERSONAL_ACCESS_TOKEN=xxxXXX
 * `npm install`
