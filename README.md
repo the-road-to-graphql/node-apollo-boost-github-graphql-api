@@ -1,6 +1,6 @@
 # Apollo Client consuming GitHub's GraphQL API
 
-[![Build Status](https://travis-ci.org/the-road-to-graphql/node-apollo-boost-github-graphql-api.svg?branch=master)](https://travis-ci.org/the-road-to-graphql/node-apollo-boost-github-graphql-api) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
+[![Build Status](https://travis-ci.org/the-road-to-graphql/node-apollo-boost-github-graphql-api.svg?branch=master)](https://travis-ci.org/the-road-to-graphql/node-apollo-boost-github-graphql-api) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/the-road-to-graphql/node-apollo-boost-github-graphql-api.svg)](https://greenkeeper.io/)
 
 A standalone version of a Apollo Client using GitHub's GraphQL API for performing queries and mutations. [Read more about it here](https://www.robinwieruch.de/react-graphql-apollo-tutorial).
 
