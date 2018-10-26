@@ -1,7 +1,6 @@
+import 'dotenv/config';
 import 'cross-fetch/polyfill';
 import ApolloClient, { gql } from 'apollo-boost';
-
-require('dotenv').config();
 
 let state = {
   organization: null,
