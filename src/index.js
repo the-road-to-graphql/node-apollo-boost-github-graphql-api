@@ -2,10 +2,6 @@ import 'dotenv/config';
 import 'cross-fetch/polyfill';
 import ApolloClient, { gql } from 'apollo-boost';
 
-let state = {
-  organization: null,
-};
-
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
   request: operation => {
@@ -16,8 +12,6 @@ const client = new ApolloClient({
     });
   },
 });
-
-// QUERY
 
 const GET_REPOSITORIES_OF_ORGANIZATION = gql`
   query($organization: String!, $cursor: String) {
@@ -41,7 +35,6 @@ const GET_REPOSITORIES_OF_ORGANIZATION = gql`
       }
     }
   }
-
   fragment repository on Repository {
     name
     url
@@ -92,8 +85,6 @@ client
   })
   // log error when there is no next page
   .catch(console.log);
-
-// MUTATION
 
 const ADD_STAR = gql`
   mutation AddStar($repositoryId: ID!) {
