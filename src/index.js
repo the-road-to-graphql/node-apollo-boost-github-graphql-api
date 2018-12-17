@@ -54,7 +54,7 @@ client
     const { pageInfo, edges } = result.data.organization.repositories;
     const { endCursor, hasNextPage } = pageInfo;
 
-    console.log('second page', edges.length);
+    console.log('first page', edges.length);
     console.log('endCursor', endCursor);
 
     return pageInfo;
