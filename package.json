@@ -17,7 +17,7 @@
     "nodemon": "^1.18.9"
   },
   "dependencies": {
-    "apollo-boost": "^0.1.22",
+    "apollo-boost": "^0.4.8",
     "cross-fetch": "^3.0.0",
     "dotenv": "^6.2.0",
     "graphql": "^14.0.2"
